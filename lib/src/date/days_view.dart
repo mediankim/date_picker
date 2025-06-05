@@ -155,7 +155,10 @@ class DaysView extends StatelessWidget {
 
     for (int i = localizations.firstDayOfWeekIndex; true; i = (i + 1) % 7) {
       // to save space in arabic as arabic don't has short week days.
-      final String weekday = weekdayNames[i].replaceFirst('ال', '');
+      String weekday = weekdayNames[i]
+          .replaceFirst('ال', '')
+          .replaceFirst(locale.toString() == 'de' ? '.' : '', '');
+
       result.add(
         ExcludeSemantics(
           child: Center(
